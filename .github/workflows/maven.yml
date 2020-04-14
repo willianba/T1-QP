@@ -25,11 +25,13 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
   build:
-    runs-on: ubuntu-latest  
+    needs: setup
+    runs-on: [ubuntu-latest]
     steps:
     - name: Build with Maven
       run: mvn -B package --file pom.xml
   test:
+    needs: [setup, build]
     runs-on: ubuntu-latest
     steps:
     - name: Build with Maven
