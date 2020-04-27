@@ -31,7 +31,7 @@ jobs:
     - name: Generate JUnit Report
       run: mvn surefire-report:report-only && mvn site -DgenerateReports=false
     - name: Upload Report
-    - uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v1.0.0
       with:
         name: junit-report
         path: target/site
